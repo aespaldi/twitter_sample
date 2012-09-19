@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # RailsCasts Episode #359: Twitter Integration
 
 http://railscasts.com/episodes/359-twitter-integration
@@ -32,3 +33,7 @@ Twitter.update("This week's topic will be on Twitter integration. You will see m
 u = User.first
 u.twitter.current_user.screen_name
 ```
+=======
+twitter_sample
+==============
+>>>>>>> 9fe1f0209d3cfa40254032cb330587ca4a1a0663
