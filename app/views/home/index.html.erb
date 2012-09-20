@@ -5,41 +5,70 @@
   <% end %>
 </div>
 
+ <% if current_user %>
+     <% @name = current_user.name %>
+    <% else %>
+      <% @name = 'profkeithdevlin' %>
+    <% end %>
+
 <h1>Welcome to my cool page about MATH!</h1>
+<!-- <div class="widget">
+<script type="text/javascript" id="WolframAlphaScript9a65d8f681eb161006ac959a570600f5" src="http://www.wolframalpha.com/widget/widget.jsp?id=9a65d8f681eb161006ac959a570600f5&theme=pink"></script>
+</div>
+<div class="widget">
+<script type="text/javascript" id="WolframAlphaScriptc08abdfad98ebf82a02023705041633b" src="http://www.wolframalpha.com/widget/widget.jsp?id=c08abdfad98ebf82a02023705041633b&theme=red&output=iframeOpenExpand"></script>
+</div> -->
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
-<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-<div id="testimonies">
-<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+<div class="tweets" >
+<script charset="utf-8"src="http://widgets.twimg.com/j/2/widget.js"></script>
 <script>
-new TWTR.Widget({
-  version: 2,
-  type: 'faves',
-  rpp: 10,
-  interval: 30000,
-  title: 'What people are saying about',
-  subject: 'math',
-  width: 250,
-  height: 300,
-  theme: {
-    shell: {
-      background: '#adadad',
-      color: '#ffffff'
-    },
-    tweets: {
-      background: '#ffffff',
-      color: '#444444',
-      links: '#3f89ba'
-    }
-  },
-  features: {
-    scrollbar: true,
-    loop: false,
-    live: true,
-    behavior: 'all'
-  }
-}).render().setUser('aespaldi').start();
+var name = '<%= @name %>'
+   new TWTR.Widget({
+	 version:2,
+     type: 'search',
+     search: 'from:'+name+'#math', // includes all advanced search queries.
+     width: 250,
+     height: 150,
+     interval: 6000,
+     subject: "What "+name+" is saying about #math",
+     title: "",
+     rpp: 30,
+     footer: "Math is the BEST!",
+     theme: {
+       shell: {
+         background: '#1deb25',
+         color: '#ffffff'
+       },
+       tweets: {
+         background: 'silver',
+         color: 'blue',
+         links: 'black'
+       }
+     },
+
+     features: {
+       avatars: true, // defaults to false for profile widget, but true for search & faves widget
+       hashtags: true,
+       timestamp: true,
+       fullscreen: false, // ignores width and height and just goes full screen
+       scrollbar: false,
+       live: true,
+       loop: true,
+       behavior: 'default',
+       dateformat: 'absolute', // defaults to relative (eg: 3 minutes ago)
+       toptweets: true // only for search widget
+     }
+   }).render().start();
 </script>
+</div>
+
+
+<div class="tweets">
+
+<a class="twitter-timeline" href="https://twitter.com/search?q=%23math" data-widget-id="248853390707261440">Tweets about "#math"</a>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
+
 </div>
