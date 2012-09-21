@@ -1,33 +1,43 @@
-<div id="testimonies">
-  <% Testimony.order("tweet_id desc").limit(3).each do |testimony| %>
-    <blockquote><%= testimony.content %></blockquote>
-    <div class="from">&mdash; @<%= testimony.screen_name %></div>
-  <% end %>
-</div>
+
+<style>
+#sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+#sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 20pxß; }
+#sortable li span { position: absolute; margin-left: -1.3em; }
+
+.widget {margin:10px; float:left;} 
+</style>
+<script>
+$(function() {
+	$( "#sortable" ).sortable();
+	$( "#sortable" ).disableSelection();
+});
+</script>
+<!-- <div id="testimonies">
+</div> -->
 
  <% if current_user %>
      <% @name = current_user.name %>
+     <% @name1 = current_user.name %>
     <% else %>
-      <% @name = 'profkeithdevlin' %>
+      <% @name = 'khanacademy' %>
     <% end %>
 
-<h1>Welcome to my cool page about MATH!</h1>
-<!-- <div class="widget">
-<script type="text/javascript" id="WolframAlphaScript9a65d8f681eb161006ac959a570600f5" src="http://www.wolframalpha.com/widget/widget.jsp?id=9a65d8f681eb161006ac959a570600f5&theme=pink"></script>
-</div>
+<h1>Hello <%= @name1 %>, Welcome to my cool page about MATH!</h1>
+
 <div class="widget">
-<script type="text/javascript" id="WolframAlphaScriptc08abdfad98ebf82a02023705041633b" src="http://www.wolframalpha.com/widget/widget.jsp?id=c08abdfad98ebf82a02023705041633b&theme=red&output=iframeOpenExpand"></script>
-</div> -->
+	<a class="twitter-timeline" href="https://twitter.com/search?q=%23math" data-widget-id="248853390707261440">Tweets about "#math"</a>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
 
 
-<div class="tweets" >
+<div class="widget">
 <script charset="utf-8"src="http://widgets.twimg.com/j/2/widget.js"></script>
 <script>
 var name = '<%= @name %>'
    new TWTR.Widget({
 	 version:2,
      type: 'search',
-     search: 'from:'+name+'#math', // includes all advanced search queries.
+     search: 'to:'+name, // includes all advanced search queries.
      width: 250,
      height: 150,
      interval: 6000,
@@ -63,12 +73,20 @@ var name = '<%= @name %>'
 </script>
 </div>
 
-
-<div class="tweets">
-
-<a class="twitter-timeline" href="https://twitter.com/search?q=%23math" data-widget-id="248853390707261440">Tweets about "#math"</a>
-<script>
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-</script>
-
+<div class="widget">
+<script type="text/javascript" id="WolframAlphaScript9a65d8f681eb161006ac959a570600f5" src="http://www.wolframalpha.com/widget/widget.jsp?id=9a65d8f681eb161006ac959a570600f5&theme=pink"></script>
 </div>
+
+<div style="float:left;vertical-align:top">
+	<br >
+<ul id="sortable" >
+<li>Math</li><li>is</li><li>cool!<li>
+</ul>
+</div>
+
+<!-- <br style="clear:both;">
+<div "class=widget"> 
+<script type="text/javascript" id="WolframAlphaScriptc08abdfad98ebf82a02023705041633b" src="http://www.wolframalpha.com/widget/widget.jsp?id=c08abdfad98ebf82a02023705041633b&theme=red&output=iframeOpenExpand"></script>
+</div>
+ -->
+ 
